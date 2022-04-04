@@ -99,6 +99,7 @@ const getHashtagErrorMessage = () => message;
 
 const getCommentErrorMessage = () => `Максимум ${MAX_COMMENT_LENGTH} символов`;
 
+
 //установка валидаторов
 const setValidateHashtagComment = () => {
 
