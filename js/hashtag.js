@@ -103,7 +103,7 @@ const getCommentErrorMessage = () => `Максимум ${MAX_COMMENT_LENGTH} с�
 //установка валидаторов
 const setValidateHashtagComment = () => {
 
-  pristine = new Pristine(formUpload, {
+  pristine = window.Pristine(formUpload, {
     classTo: 'form__text__pristine',
     errorClass: 'has-danger',
     errorTextParent: 'form__text__pristine',
