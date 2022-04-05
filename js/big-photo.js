@@ -21,11 +21,6 @@ const RememberComments = {
 };
 
 
-//нажатие на кнопку закрытия большого фото
-const onCancelClick = () => {
-  bigPicture.classList.add('hidden');
-};
-
 //создать строку для отображения счетчика
 const setStringCount = () => {
 
@@ -74,15 +69,20 @@ const onLoaderClick = () => {
   loadNextComments();
 };
 
-//закрытие окна: добавляет класс и удаляет обработчик
+//закрытие окна: добавляет/удаляет классы и удаляет обработчики
 const hideBigPhoto = () => {
   bigPicture.classList.add('hidden');
-  bodySelector.classList.add('modal-open');
+  bodySelector.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onPopupeEscPress);
   socialCommentsLoader.removeEventListener('click', onLoaderClick);
   pictureCancel.removeEventListener('click', onCancelClick);
 };
+
+//нажатие на кнопку закрытия большого фото
+function onCancelClick () {
+  hideBigPhoto();
+}
 
 //нажатие клавиши Esc на открытом окне
 function onPopupeEscPress (evt) {
@@ -95,13 +95,14 @@ function onPopupeEscPress (evt) {
 //открытие окна: удаляет класс и добавляет обработчики на нажатие клавиши и на клик
 const showPhoto = () => {
 
+  //убираем прокрутку
+  bodySelector.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
+
   document.addEventListener('keydown', onPopupeEscPress);
   socialCommentsLoader.addEventListener('click', onLoaderClick);
   pictureCancel.addEventListener('click', onCancelClick);
 
-  //показываем прокрутку
-  bodySelector.classList.remove('.modal-open');
 };
 
 //удаляем комменты из разметки

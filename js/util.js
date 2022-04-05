@@ -81,27 +81,4 @@ function deleteBlockMessage(name) {
   deleteBlock(`.${name}`);
 }
 
-//получить рандомное число
-const getRandomInt = (min, max, checkedValues = null) => {
-
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-
-  const initialValues = [];
-  for (let i = lower; i <= upper; i++) {
-    if (checkedValues !== null && checkedValues.includes(i)) {
-      continue;
-    }
-    initialValues.push(i);
-  }
-
-  const result = initialValues[Math.floor(Math.random() * initialValues.length)];
-
-  if (checkedValues !== null) {
-    checkedValues.push(result);
-  }
-  return result;
-};
-
-
-export { getRandomInt, isEscEvent, showBlockMessage};
+export { isEscEvent, showBlockMessage};

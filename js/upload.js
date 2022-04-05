@@ -130,7 +130,7 @@ const removeListeners = () => {
 
 const resetValuesClasses = () => {
   imgUploadOverlay.classList.add('hidden');
-  bodySelector.classList.add('.modal-open');
+  bodySelector.classList.remove('modal-open');
   imgUploadText.classList.remove('error__description__comment');
   textHashtags.classList.remove('error__description');
   textHashtags.value = '';
@@ -157,7 +157,7 @@ const showImgUpload = () => {
   setScale('reset');
 
   imgUploadOverlay.classList.remove('hidden');
-  bodySelector.classList.remove('.modal-open');
+  bodySelector.classList.add('modal-open');
   uploadCancel.addEventListener('click', onUploadCancelClick);
   document.addEventListener('keydown', onPopupeEscPress);
 };
