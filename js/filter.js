@@ -4,9 +4,9 @@ import { renderPhotos } from './render-photo.js';
 const QUANTITY_RANDOM = 10;
 const RERENDER_DELAY = 500;
 const FilterPhotos = {
-  DEFAULT: [],
-  RANDOM: [],
-  DISCUSSED: [],
+  DEFAULT_PHOTOS: [],
+  RANDOM_PHOTOS: [],
+  DISCUSSED_PHOTOS: [],
 };
 
 const filterButtons = document.querySelectorAll('.img-filters__button');
@@ -34,7 +34,7 @@ const changeFilter = (cb) => (evt) => {
   let photos = FilterPhotos[nameFilter.toUpperCase()];
 
   if (nameFilter === 'random') {
-    photos = sortRandomFirst(FilterPhotos.DEFAULT.slice());
+    photos = sortRandomFirst(FilterPhotos.DEFAULT_PHOTOS.slice());
   }
 
   cb(photos);
@@ -62,8 +62,8 @@ const sortDiscussed = (photos) => photos.slice().sort(compareComments);
 //запоминаем сортировку, она меняться не будет с момента загрузки,
 //т.к. нет действий пользователей.
 const filterPhotos = (photos) => {
-  FilterPhotos.DEFAULT = photos;
-  FilterPhotos.DISCUSSED = sortDiscussed(photos);
+  FilterPhotos.DEFAULT_PHOTOS = photos;
+  FilterPhotos.DISCUSSED_PHOTOS = sortDiscussed(photos);
 };
 
 export { setListenersFilters, filterPhotos};

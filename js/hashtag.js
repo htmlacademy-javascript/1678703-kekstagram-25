@@ -28,16 +28,16 @@ const validateComment = (value) => {
 const validateHastag = (hashtags, regExp) => {
 
   //обход всех хештегов
-  const repeatingHastags = [];
+  const repeatedHastags = [];
   for (const hashtag of hashtags) {
     //все валидные
     if (regExp.test(hashtag)) {
       //проверка повторяющихся хештегов без учета регистра
-      if (repeatingHastags.indexOf(hashtag.toLowerCase()) >= 0) {
+      if (repeatedHastags.indexOf(hashtag.toLowerCase()) >= 0) {
         message = `Хештег (${hashtag}) уже использовался.`;
         return false;
       }
-      repeatingHastags.push(hashtag.toLowerCase());
+      repeatedHastags.push(hashtag.toLowerCase());
       continue;
     }
     //все НЕ валидные -----------------------------

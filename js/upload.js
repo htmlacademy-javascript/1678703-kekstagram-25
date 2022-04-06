@@ -162,7 +162,7 @@ const showImgUpload = () => {
   document.addEventListener('keydown', onPopupeEscPress);
 };
 
-const allНandlers = () => {
+const setAllHandlers = () => {
 
   submitForm();
   showImgUpload();
@@ -188,7 +188,7 @@ const onUploadFile = () => {
     }
   }
 
-  allНandlers();
+  setAllHandlers();
 
 };
 

@@ -1,6 +1,10 @@
 import { isEscEvent } from './util.js';
 
 const LOAD_COMMENTS_STEP = 5;
+const RememberComments = {
+  COMMENTS: [],
+  COUNT_OPEN: 0,
+};
 
 const bigPicture = document.querySelector('.big-picture');
 const pictureCancel = document.querySelector('.big-picture__cancel');
@@ -15,10 +19,6 @@ const commentListFragment = document.createDocumentFragment();
 const socialCommentCount = document.querySelector('.social__comment-count');
 const socialCommentsLoader = document.querySelector('.social__comments-loader');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
-const RememberComments = {
-  COMMENTS: [],
-  COUNT_OPEN: 0,
-};
 
 
 //создать строку для отображения счетчика

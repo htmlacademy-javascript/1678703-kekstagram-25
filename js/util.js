@@ -14,7 +14,7 @@ const deleteBlock = (name) => {
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
 //нажатие Escape
-const onPopupeEscPress = (name) => (evt) => {
+const onEscPress = (name) => (evt) => {
   if (isEscEvent(evt)) {
     evt.preventDefault();
     deleteBlockMessage(name);
@@ -22,8 +22,8 @@ const onPopupeEscPress = (name) => (evt) => {
 };
 
 //обработчики нажатия Escape
-const successEscHandler = onPopupeEscPress(NameBlock.SUCCESS);
-const errorEscHandler = onPopupeEscPress(NameBlock.ERROR);
+const onEscPressSuccess = onEscPress(NameBlock.SUCCESS);
+const onEscPressError = onEscPress(NameBlock.ERROR);
 
 //клик на любом месте окна кроме таблички
 const onDocumentClick = (name) => (evt) => {
@@ -33,14 +33,14 @@ const onDocumentClick = (name) => (evt) => {
   }
 };
 
-const successClickHandler = onDocumentClick(NameBlock.SUCCESS);
-const errorClickHandler = onDocumentClick(NameBlock.ERROR);
+const onDocumentClickSuccess = onDocumentClick(NameBlock.SUCCESS);
+const onDocumentClickError = onDocumentClick(NameBlock.ERROR);
 
 //клик на кнопке закрытия, обработчики не удаляем, т.к. элемент будет удален
-const successButtonHandler = () => {
+const onButtonPressSuccess = () => {
   deleteBlockMessage(NameBlock.SUCCESS);
 };
-const errorButtonHandler = () => {
+const onButtonPressError = () => {
   deleteBlockMessage(NameBlock.ERROR);
 };
 
@@ -59,24 +59,24 @@ const showBlockMessage = (text, textButton, name) => {
   body.appendChild(currentBlock);
 
   if (name === NameBlock.SUCCESS) {
-    document.addEventListener('keydown', successEscHandler);
-    currentButton.addEventListener('click', successButtonHandler);
-    document.addEventListener('click', successClickHandler);
+    document.addEventListener('keydown', onEscPressSuccess);
+    currentButton.addEventListener('click', onButtonPressSuccess);
+    document.addEventListener('click', onDocumentClickSuccess);
     return;
   }
-  document.addEventListener('keydown', errorEscHandler);
-  currentButton.addEventListener('click', errorButtonHandler);
-  document.addEventListener('click', errorClickHandler);
+  document.addEventListener('keydown', onEscPressError);
+  currentButton.addEventListener('click', onButtonPressError);
+  document.addEventListener('click', onDocumentClickError);
 };
 
 //удалить блок с сообщением и обработчики (поднятие)
 function deleteBlockMessage(name) {
   if (name === NameBlock.SUCCESS) {
-    document.removeEventListener('keydown', successEscHandler);
-    document.removeEventListener('click', successClickHandler);
+    document.removeEventListener('keydown', onEscPressSuccess);
+    document.removeEventListener('click', onDocumentClickSuccess);
   } else {
-    document.removeEventListener('keydown', errorEscHandler);
-    document.removeEventListener('click', errorClickHandler);
+    document.removeEventListener('keydown', onEscPressError);
+    document.removeEventListener('click', onDocumentClickError);
   }
   deleteBlock(`.${name}`);
 }
