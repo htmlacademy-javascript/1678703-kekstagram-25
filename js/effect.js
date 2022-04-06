@@ -1,13 +1,15 @@
+const CurrentEffect = {
+  MAX: 0,
+  EFFECT: '',
+};
+
+
 const EFFECT_PREWIEW = 'effects__preview--';
 const effectLevelValue = document.querySelector('.effect-level__value');
 const sliderElement = document.querySelector('.effect-level__slider');
 const imgUploadPreview = document.querySelector('.img-upload__preview');
 const previewImg = imgUploadPreview.querySelector('img');
 const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
-const CurrentEffect = {
-  MAX: 0,
-  EFFECT: '',
-};
 
 
 //установка эффекта при создании/смене ноуслайдера и при изменении уровня эффекта
